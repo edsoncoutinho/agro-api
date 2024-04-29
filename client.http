@@ -1,0 +1,103 @@
+@baseUrl = http://localhost:3333
+@authToken = {{authenticate.response.body.access_token}}
+
+# @name create_account
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": "123456"
+}
+###
+
+# @name authenticate
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
+  "email": "johndoe@example.com",
+  "password": "123456"
+}
+###
+
+# @name create_plantation
+POST {{baseUrl}}/plantations
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "Soja"
+}
+###
+
+# @name create_farmer
+POST {{baseUrl}}/farmers
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "name": "John Doe",
+  "document": "36361519000142",
+  "documentType": "CNPJ",
+  "farmName": "Doe Farm",
+  "state": "SP",
+  "city": "São Paulo",
+  "totalArea": 200.0,
+  "arableArea": 150,
+  "vegetationArea": 50,
+  "plantations": [
+    {
+      "id": "3c5b784b-0f56-442f-a34b-a27978bdd167",
+      "title": "Soja"
+    }
+  ]
+}
+###
+
+# @name get_farmer
+GET {{baseUrl}}/farmers/96ad9745-c81e-4db3-a809-0951becce035
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name delete_farmer
+DELETE {{baseUrl}}/farmers/3fe96dd2-105f-4104-94c8-827f1f26c887
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name update_farmer
+PUT {{baseUrl}}/farmers/3fe96dd2-105f-4104-94c8-827f1f26c887
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "name": "John Doe",
+  "document": "86554441891",
+  "documentType": "CPF",
+  "farmName": "Doe Farm",
+  "state": "MG",
+  "city": "Belo Horizonte",
+  "totalArea": 100.0,
+  "arableArea": 60,
+  "vegetationArea": 40,
+  "plantations": [
+    {
+      "id": "b87a52b4-cdf3-43d4-8039-580151792d66",
+      "title": "Soja"
+    }
+  ]
+}
+###
+
+# @name get_dashboard
+GET {{baseUrl}}/dashboard
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
