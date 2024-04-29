@@ -18,4 +18,5 @@ jobs:
       - run: npm run test
         env:
           JWT_SECRET: testing
+          DATABASE_URL: "postgresql://docker:docker@localhost:5432/agro-api?schema=public"
     
