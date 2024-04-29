@@ -11,7 +11,7 @@ describe("Get Dashboard", () => {
     sut = new GetDashboardUseCase(inMemoryFarmersRepository);
   });
 
-  it.only("should be able to get a dashboard", async () => {
+  it("should be able to get a dashboard", async () => {
     const farmer1 = makeFarmer();
     const farmer2 = makeFarmer();
 

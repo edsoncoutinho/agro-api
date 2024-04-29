@@ -12,7 +12,7 @@ describe("Get Farmer", () => {
     sut = new GetFarmerUseCase(inMemoryFarmersRepository);
   });
 
-  it.only("should be able to get a farmer", async () => {
+  it("should be able to get a farmer", async () => {
     const newFarmer = makeFarmer(
       {
         name: "John Doe",

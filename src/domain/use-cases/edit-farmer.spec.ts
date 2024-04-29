@@ -12,7 +12,7 @@ describe("Edit Farmer", () => {
     sut = new EditFarmerUseCase(inMemoryFarmersRepository);
   });
 
-  it.only("should be able to edit a farmer", async () => {
+  it("should be able to edit a farmer", async () => {
     const newFarmer = makeFarmer(
       {
         totalArea: 100,
